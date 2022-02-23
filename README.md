@@ -1,5 +1,7 @@
 # Vanilla To do list server
 
+vanilla-to-do-list server 저장소 입니다. ( [To do list client 저장소 바로가기](https://github.com/ryong9rrr/vanilla-to-do-list) )
+
 <table>
     <thead>
         <tr>

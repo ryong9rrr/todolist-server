@@ -1,6 +1,6 @@
 const request = require("supertest");
 const should = require("should");
-const app = require("./app.js");
+const app = require("../../app.js");
 
 describe("GET - /items", () => {
   it("성공) 배열을 출력한다.", (done) => {
@@ -79,7 +79,6 @@ describe("PUT - /items/:category/:id", () => {
   it("성공) category 값을 변경한다.", (done) => {
     request(app)
       .put("/items/todo/2")
-      .send({ category: "doing" })
       .end((err, res) => {
         res.body.should.have.property("category", "doing");
       });
@@ -87,14 +86,13 @@ describe("PUT - /items/:category/:id", () => {
   });
 
   it("실패) 없는 id이다.", (done) => {
-    request(app).put("/items/todo/999").send({ category: "doing" }).expect(404);
+    request(app).put("/items/todo/999").expect(404);
     done();
   });
 
   it("실패) category가 todo나 doing이 아닌 값이다.", (done) => {
     request(app)
       .put("/items/done/1")
-      .send({ category: "doing" })
       .end((err, res) => {
         res.status.should.be.equal(400);
       });
@@ -104,7 +102,6 @@ describe("PUT - /items/:category/:id", () => {
   it("실패) category가 todo나 doing이 아닌 값이다.", (done) => {
     request(app)
       .put("/items/todos/1")
-      .send({ category: "doing" })
       .end((err, res) => {
         res.status.should.be.equal(400);
       });

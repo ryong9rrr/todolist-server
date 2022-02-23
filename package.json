@@ -14,7 +14,7 @@
     "supertest": "^6.2.2"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha app.spec.js",
+    "test": "./node_modules/.bin/mocha src/test/app.spec.js",
     "start": "node app.js"
   },
   "author": "",
