@@ -81,3 +81,9 @@ headers
 ```
 PUT /items/:category/:id
 ```
+
+</br>
+
+# Blog(notion)
+
+[🤔 API 설계 & 테스트 생각해보기](https://www.notion.so/ryong9rrr/API-a34a1582c521441fa1b2bb35ec99aa20)
