@@ -26,21 +26,21 @@
 
 </br>
 
-# Getting started
+# 1. Getting started
 
 1. git clone this repository.
 
-2. in your cloned folder, install dependencies
+2. install dependencies
 
-`npm install`
+   `$ npm install`
 
 3. run
 
-`npm start`
+   `$ npm start`
 
 </br>
 
-# API
+# 2. API
 
 ## 모든 할 일 목록을 가져온다.
 
@@ -58,12 +58,20 @@ DELETE /items/:category/:id
 
 ```
 POST /items
+headers
+{
+    text: string
+}
 ```
 
-## 이름을 수정한다.
+## 할 일을 수정한다.
 
 ```
 PUT /items/:id
+headers
+{
+    text: string
+}
 ```
 
 ## 할 일을 이동시킨다.

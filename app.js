@@ -37,10 +37,9 @@ app.get("/items", (req, res) => {
 });
 
 app.delete("/items/:category/:id", async (req, res) => {
-  const prevLength = items.length;
   const { category, id } = req.params;
-  if (category !== "todo" || category !== "doing" || category !== "done") {
-    return res.status(400).end();
+  if (!(category === "todo" || category === "doing" || category === "done")) {
+    return res.status(400).send("존재하지 않는 category에요.").end();
   }
 
   const valid = (item) => item.category === category && item.id === id;
@@ -51,17 +50,12 @@ app.delete("/items/:category/:id", async (req, res) => {
   }
 
   items.splice(targetIndex, 1);
-  if (prevLength === items.length - 1) {
-    return res.status(204).end();
-  }
-
-  // 로직이 잘못되었다.
-  return res.status(403).end();
+  return res.status(204).end();
 });
 
 app.post("/items", (req, res) => {
   if (!req.body.text) {
-    return res.status(400).end();
+    return res.status(400).send("text가 없어요..").end();
   }
   const newItem = new Item(req.body.text);
   items.push(newItem);
@@ -74,7 +68,7 @@ app.put("/items/:id", (req, res) => {
   const targetIndex = items.findIndex((item) => item.id === id);
 
   if (targetIndex < 0) {
-    return res.status(400).end();
+    return res.status(400).send("존재하지 않는 id에요.").end();
   }
 
   items[targetIndex].text = newText;
@@ -84,12 +78,17 @@ app.put("/items/:id", (req, res) => {
 app.put("/items/:category/:id", (req, res) => {
   const { category, id } = req.params;
   if (!(category === "todo" || category === "doing")) {
-    return res.status(400).end();
+    return res.status(400).send("존재하지 않는 category에요.").end();
   }
   const targetIndex = items.findIndex((item) => item.id === id);
   if (targetIndex < 0) {
-    return res.status(404).end();
+    return res.status(404).send("존재하지 않는 id에요.").end();
   }
+
+  if (items[targetIndex].category !== category) {
+    return res.status(400).send("category가 달라요.").end();
+  }
+
   items[targetIndex].updatedAt = Date.now();
   if (category === "todo") {
     items[targetIndex].category = "doing";

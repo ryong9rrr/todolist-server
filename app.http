@@ -1,0 +1,32 @@
+###
+GET http://localhost:3000/ HTTP/1.1
+
+###
+GET http://localhost:3000/items HTTP/1.1
+
+###
+POST http://localhost:3000/items HTTP/1.1
+content-type: application/json
+
+
+{
+    "text": "서버 완성하기"
+}
+
+###
+PUT http://localhost:3000/items/2 HTTP/1.1
+content-type: application/json
+
+{
+    "text": "알고리즘 공부하기"
+}
+
+###
+PUT http://localhost:3000/items/todo/1 HTTP/1.1
+
+###
+PUT http://localhost:3000/items/doing/1 HTTP/1.1
+
+
+###
+DELETE http://localhost:3000/items/todo/6EfeP3gqwt7Q-SxK6p_UH HTTP/1.1
