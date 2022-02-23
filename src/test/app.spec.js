@@ -1,6 +1,15 @@
 const request = require("supertest");
 const should = require("should");
-const app = require("../../app.js");
+const app = require("../app.js");
+const Store = require("../model/Store.js");
+const Item = require("../model/Item.js");
+
+const store = new Store();
+
+before("초기 값 세팅", () => {
+  store._items.push(new Item("자바스크립트 공부하기", "1"));
+  store._items.push(new Item("서버만들기", "2"));
+});
 
 describe("GET - /items", () => {
   it("성공) 배열을 출력한다.", (done) => {
@@ -58,13 +67,8 @@ describe("POST - /items", () => {
 
 describe("PUT - /items/:id", () => {
   it("성공) text 값을 변경한다.", (done) => {
-    const changedText = "타입스크립트 공부하기";
-    request(app)
-      .put("/items/1")
-      .send({ text: changedText })
-      .end((err, res) => {
-        res.body.should.have.property("text", changedText);
-      });
+    const newText = "타입스크립트 공부하기";
+    request(app).put("/items/2").send({ text: newText }).expect(201);
     done();
   });
 
@@ -77,11 +81,7 @@ describe("PUT - /items/:id", () => {
 
 describe("PUT - /items/:category/:id", () => {
   it("성공) category 값을 변경한다.", (done) => {
-    request(app)
-      .put("/items/todo/2")
-      .end((err, res) => {
-        res.body.should.have.property("category", "doing");
-      });
+    request(app).put("/items/todo/2").expect(201);
     done();
   });
 

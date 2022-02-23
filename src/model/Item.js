@@ -1,5 +1,7 @@
 const { nanoid } = require("nanoid");
 
+// id의 default는 test를 위함
+
 class Item {
   constructor(text, id = nanoid()) {
     const createdTime = Date.now();

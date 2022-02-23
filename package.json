@@ -9,13 +9,14 @@
     "nanoid": "^3.3.1"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "mocha": "^9.2.1",
     "should": "^13.2.3",
     "supertest": "^6.2.2"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha src/test/app.spec.js",
-    "start": "node app.js"
+    "test": "cross-env NODE_ENV=test mocha src/test/app.spec.js",
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC"

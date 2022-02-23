@@ -10,23 +10,23 @@ content-type: application/json
 
 
 {
-    "text": "서버 완성하기"
+    "text": "밥 먹기"
 }
 
 ###
-PUT http://localhost:3000/items/2 HTTP/1.1
+PUT http://localhost:3000/items/7A5m9WbtfZMOfpZmQ4lOa HTTP/1.1
 content-type: application/json
 
 {
-    "text": "알고리즘 공부하기"
+    "text": "공부하기"
 }
 
 ###
-PUT http://localhost:3000/items/todo/1 HTTP/1.1
+PUT http://localhost:3000/items/todo/v9cTI9kBeeSmpl3MUrIOU HTTP/1.1
 
 ###
 PUT http://localhost:3000/items/doing/1 HTTP/1.1
 
 
 ###
-DELETE http://localhost:3000/items/todo/1 HTTP/1.1
+DELETE http://localhost:3000/items/doing/v9cTI9kBeeSmpl3MUrIOU HTTP/1.1

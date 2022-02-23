@@ -2,10 +2,7 @@ const Item = require("./Item.js");
 
 class Store {
   constructor() {
-    this._items = [
-      new Item("자바스크립트 공부하기", "1"),
-      new Item("서버만들기", "2"),
-    ];
+    this._items = [];
   }
 
   get items() {
