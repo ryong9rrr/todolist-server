@@ -1,9 +1,10 @@
 const morgan = require("morgan");
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const router = require("./controller/router.js");
-const Store = require("./model/Store.js");
 
+app.use(cors());
 if (process.env.NODE_ENV !== "test") {
   app.use(morgan("dev"));
 }
